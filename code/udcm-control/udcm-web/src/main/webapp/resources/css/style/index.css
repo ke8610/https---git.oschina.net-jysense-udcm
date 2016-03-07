@@ -1,0 +1,45 @@
+.ericsson_colorline{
+	background:#002b60;
+	background:-webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #a1c517), color-stop(25%, #009045), color-stop(50%, #0082b6), color-stop(75%, #151f77), color-stop(100%, #db004f)),#002b60;
+	background:-webkit-linear-gradient(left, #a1c517 0%, #009045 25%, #0082b6 50%, #151f77 75%, #db004f 100%),#002b60;
+	background:-moz-linear-gradient(left, #a1c517 0%, #009045 25%, #0082b6 50%, #151f77 75%, #db004f 100%),#002b60;
+	background:-o-linear-gradient(left, #a1c517 0%, #009045 25%, #0082b6 50%, #151f77 75%, #db004f 100%),#002b60;
+	background:-ms-linear-gradient(left, #a1c517 0%, #009045 25%, #0082b6 50%, #151f77 75%, #db004f 100%),#002b60;
+	background:linear-gradient(left, #a1c517 0%, #009045 25%, #0082b6 50%, #151f77 75%, #db004f 100%),#002b60;
+	height:4px;width:100%;
+}
+.logo_div{
+	float: left;
+	padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+}
+.logo a{
+	background: url("../../img/logo.png") no-repeat scroll 0 8px rgba(0, 0, 0, 0);
+	display: block;
+    height: 60px;
+    line-height: 60px;
+}
+.logo span{
+	margin-left: 60px;
+}
+.user_div{
+	float: right;
+	height: 100%;
+}
+.user-ul{
+	min-width: 160px;
+}
+.content{
+	height: calc(100% - 127px);
+}
+.chart_area{
+	float: left;
+	width: 50%;
+	height: 50%;
+}
+.chart_main{
+	width: 100%;
+	height: 100%;
+				
+}

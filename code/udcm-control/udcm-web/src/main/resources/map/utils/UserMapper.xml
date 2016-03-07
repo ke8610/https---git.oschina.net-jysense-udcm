@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ericsson.dao.mapper.UserMapper">
+	<sql id="Select_Field_Clause">
+		username,password,manager
+	</sql>
+	<resultMap type="user" id="userResult">
+		<result property="sid" column="sid"/>
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="manager" column="manager" />
+	</resultMap>
+
+	<select id="find" resultMap="userResult" parameterType="user">
+		select sid, username, password, manager from user
+		<where>
+			<if test="sid != null">  
+				sid=#{sid}
+			</if>
+			<if test="username !=null">
+				and username=#{username}
+			</if>
+			<if test="password !=null">
+				and password=#{password}
+			</if>
+			<if test="manager !=null">
+				and manager=#{manager}
+			</if>
+		</where>
+		<trim prefix="limit">
+			<if test="limit!=null">
+		 		#{start},#{limit}
+		 	</if>
+		</trim>
+ 	</select>
+ 	<insert id="insert" parameterType="user">
+		insert into user (username, password,manager)
+		values (#{username},#{password},#{manager})
+	</insert>
+	<insert id="insertBatch" parameterType="List">
+		insert into user (<include refid="Select_Field_Clause" />)
+		values 
+		<foreach collection="list" item="item" index="index" separator="," >  
+        	(#{item.username}, #{item.password}, #{item.manager})
+    	</foreach>  
+	</insert>
+	<update id="update" parameterType="user">
+		update user
+		<set>
+			<if test="username != null"> 
+				username = #{username},
+			</if>
+			<if test="password != null"> 
+				password = #{password},
+			</if>
+			<if test="manager != null"> 
+				manager = #{manager}
+			</if>
+		</set>
+		where sid = #{sid}
+	</update>
+	<delete id="delete" parameterType="user">
+		DELETE FROM user 
+		<where>
+			<if test="sid != null">  
+				sid=#{sid}
+			</if>
+			<if test="username != null">  
+				and username=#{username}
+			</if>
+			<if test="password != null">  
+				and password=#{password}
+			</if>
+			<if test="manager != null">  
+				and manager=#{manager}
+			</if>
+		</where>
+	</delete>
+	<delete id="deleteByKey" parameterType="user">
+		DELETE FROM user where sid = #{sid}
+	</delete>
+	<select id="findCount" resultType="Long">
+		SELECT count(*) FROM user
+	</select>
+</mapper>
